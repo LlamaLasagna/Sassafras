@@ -1,0 +1,58 @@
+﻿<Window x:Class="Sassafras.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sassafras"
+        mc:Ignorable="d"
+        Title="Settings" Height="390" Width="600"
+        MinHeight="300" MinWidth="500"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <TabControl>
+
+            <TabItem Header="File Watchers">
+                <Grid>
+                    <ScrollViewer Margin="0,0,0,55">
+                        <Grid>
+                            <StackPanel x:Name="FileLinkList" Margin="10,10,10,65"></StackPanel>
+                        </Grid>
+                    </ScrollViewer>
+                    <Button Content="Add" Width="170" Height="30" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10" Click="BtnAddFile_Click" />
+                    <!--<Button Content="Save" Width="95" Height="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,10" Click="BtnSaveFileLinks_Click" />-->
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Settings">
+                <Grid Margin="10">
+                    <Label Content="Dart Sass Application" Height="25" VerticalAlignment="Top" />
+                    <TextBox x:Name="TxtSassPath" Text="" IsReadOnly="True" FontSize="10" VerticalContentAlignment="Center" Height="30" VerticalAlignment="Top" Margin="0,25,50,0" />
+                    <Button Content="Browse" FontSize="10" Width="50" Height="30" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,25,0,0" Click="BtnBrowseSass_Click" />
+
+                    <Grid Height="55" VerticalAlignment="Top" Margin="0,60,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Content="Default SCSS Directory" Height="25" VerticalAlignment="Top" Margin="0,0,10,0" />
+                        <TextBox x:Name="TxtDefaultInput" Text="" IsReadOnly="True" FontSize="10" VerticalContentAlignment="Center" Margin="0,25,60,0" />
+                        <Button Content="Browse" FontSize="10" Width="50" HorizontalAlignment="Right" Margin="0,25,10,0" Click="BtnBrowseDefaultInput_Click" />
+
+                        <Label Content="Default CSS Directory" Height="25" VerticalAlignment="Top" Margin="10,0,0,0" Grid.Column="1" />
+                        <TextBox x:Name="TxtDefaultOutput" Text="" IsReadOnly="True" FontSize="10" VerticalContentAlignment="Center" Margin="10,25,50,0" Grid.Column="1" />
+                        <Button Content="Browse" FontSize="10" Width="50" HorizontalAlignment="Right" Margin="0,25,0,0" Click="BtnBrowseDefaultOutput_Click" Grid.Column="1" />
+                    </Grid>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Console">
+                <Grid Margin="0">
+                    <TextBox x:Name="TxtOutputLog" Text="" IsReadOnly="True" FontFamily="Consolas" Background="Black" Foreground="LightGray" TextWrapping="WrapWithOverflow" Padding="10"
+                             VerticalScrollBarVisibility="Visible"/>
+                </Grid>
+            </TabItem>
+
+        </TabControl>
+    </Grid>
+</Window>
