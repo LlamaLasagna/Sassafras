@@ -50,6 +50,7 @@ namespace Sassafras
             //Set log event handlers
             SassHandler.OnOutput += SassHandler_Output;
             SassHandler.OnError += SassHandler_Output;
+            //Initialise the console tab
             UpdateSassConsole();
         }
 

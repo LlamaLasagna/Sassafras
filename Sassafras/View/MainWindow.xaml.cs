@@ -43,10 +43,6 @@ namespace Sassafras
                 HandleCriticalError(ex, "Error initialising application.");
             }
 
-            //TODO: Test with no settings
-            Properties.Settings.Default.Reset();
-            Properties.Settings.Default.Save();
-
             try
             {
                 //Initialise Sass Handler
@@ -92,6 +88,14 @@ namespace Sassafras
             //Handle the exception and shut down the application
             HandleError(ex, userMessage);
             CloseApplication();
+        }
+
+
+        public void HandleSassError()
+        {
+            Focus();
+            string errorMessage = SassHandler.ErrorLines.Last();
+            MessageBox.Show("An error occurred with Sass:\r\n\r\n" + errorMessage, "Sassafras Error!", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
 
@@ -154,8 +158,10 @@ namespace Sassafras
 
         private void SassHandler_Error(object sender, EventArgs e)
         {
-            string errorMessage = SassHandler.ErrorLines.Last();
-            MessageBox.Show("An error occurred with Sass:\r\n\r\n" + errorMessage, "Sassafras Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+            Dispatcher.Invoke(() =>
+            {
+                HandleSassError();
+            });
         }
 
 
